@@ -1,0 +1,102 @@
+"" Map leader to ,
+let mapleader=','
+
+" nnoremap <leader>rr :source ~/.ideavimrc<CR>
+nnoremap \r :action IdeaVim.ReloadVimRc.reload<CR>
+nnoremap \e :e ~/.ideavimrc<CR>
+
+"" command setting
+set showmode
+set scrolloff=5
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+" Search for selected text.
+xnoremap * "zy/<C-R>z<CR>
+xnoremap # "zy?<C-R>z<CR>
+
+"" Idea settings
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+
+" Plugin
+set multiple-cursors
+set easymotion
+set NERDTree
+
+" Don't use Ex mode
+map Q gq
+
+" 순수 vim 설정
+
+"" Switch windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+vnoremap < <gv
+vnoremap > >gv
+
+nnoremap <leader><space> :nohlsearch<CR>
+
+" ideavim 설정
+"" Plugin Mappings
+map <leader>f <Plug>(easymotion-s)
+map <leader>e <Plug>(easymotion-f)
+
+nnoremap <silent> <F2> :NERDTreeFind<CR>
+nnoremap <silent> <F3> :NERDTreeToggle<CR>
+
+"" 화면 분할
+map <leader>h <Action>(SplitHorizontally)
+map <leader>v <Action>(SplitVertically)
+
+"" IDE Actions
+map <A-F4> <Action>(CloseProject)
+
+map <S-Space> <Action>(ShowErrorDescription)
+
+map <leader>r <Action>(RenameElement)
+map <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
+map <leader>s <Action>(SelectInProjectView)
+map <leader>a <Action>(Annotate)
+map <leader>o <Action>(FileStructurePopup)
+
+" vim
+sethandler <C-A> a:vim
+sethandler <C-D> a:vim
+sethandler <C-F> a:vim
+
+sethandler <C-B> a:vim
+
+sethandler <C-H> a:vim
+sethandler <C-J> a:vim
+sethandler <C-K> a:vim
+sethandler <C-L> a:vim
+
+sethandler <C-R> n:vim
+
+sethandler <C-V> a:vim
+
+" ide
+sethandler <C-G> a:ide
+
+sethandler <C-T> a:ide
+
+" misc
+sethandler <C-2> a:ide
+sethandler <C-E> a:ide
+sethandler <C-I> a:ide
+sethandler <C-M> a:ide
+sethandler <C-N> a:ide
+sethandler <C-O> a:ide
+sethandler <C-P> a:ide
+sethandler <C-S> a:ide
+sethandler <C-6> a:ide
+sethandler <C-S-2> a:ide
+sethandler <C-S-6> a:ide
+sethandler <C-w> a:ide
