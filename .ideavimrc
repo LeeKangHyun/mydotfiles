@@ -55,7 +55,13 @@ nnoremap <silent> <F3> :NERDTreeToggle<CR>
 map <leader>h <Action>(SplitHorizontally)
 map <leader>v <Action>(SplitVertically)
 
+
 "" IDE Actions
+" Navigation Tab
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
+
+"
 map <A-F4> <Action>(CloseProject)
 
 map <S-Space> <Action>(ShowErrorDescription)
