@@ -79,6 +79,14 @@ map <leader>s <Action>(SelectInProjectView)
 map <leader>a <Action>(Annotate)
 map <leader>o <Action>(FileStructurePopup)
 
+" Text up and down
+nmap <A-Up> <Action>(MoveStatementUp)
+nmap <A-Down> <Action>(MoveStatementDown)
+imap <A-Up> <Action>(MoveStatementUp)
+imap <A-Down> <Action>(MoveStatementDown)
+vmap <A-Up> <Action>(MoveStatementUp)
+vmap <A-Down> <Action>(MoveStatementDown)
+
 " vim
 sethandler <C-A> a:vim
 sethandler <C-D> a:vim
