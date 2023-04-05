@@ -69,6 +69,7 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 
 "
+map \p <Action>(ParameterInfo)
 map <A-F4> <Action>(CloseProject)
 
 map <S-Space> <Action>(ShowErrorDescription)
