@@ -8,6 +8,11 @@ nnoremap \e :e ~/.ideavimrc<CR>
 "" command setting
 set showmode
 set scrolloff=5
+set showcmd
+set visualbell
+set clipboard+=unnamed
+set history=200
+
 set hlsearch
 set incsearch
 set ignorecase
@@ -18,9 +23,11 @@ xnoremap * "zy/<C-R>z<CR>
 xnoremap # "zy?<C-R>z<CR>
 
 "" Idea settings
+set selectmode=ideaselection
 set ideajoin
 set ideastatusicon=gray
 set idearefactormode=keep
+set ideamarks
 
 " Plugin
 set multiple-cursors
@@ -31,6 +38,11 @@ set NERDTree
 map Q gq
 
 " 순수 vim 설정
+"" easy system clipboard copy/paste
+noremap y "*y
+noremap Y "*Y
+noremap p "*p
+noremap P "*P
 
 "" Switch windows
 nnoremap <C-h> <C-w>h
@@ -42,6 +54,13 @@ vnoremap < <gv
 vnoremap > >gv
 
 nnoremap <leader><space> :nohlsearch<CR>
+
+nnoremap H ^
+nnoremap L $
+vnoremap H ^
+vnoremap L $
+
+map U <C-R>
 
 " ideavim 설정
 "" Plugin Mappings
@@ -65,12 +84,9 @@ map <leader>v <Action>(SplitVertically)
 
 "" IDE Actions
 " Navigation Tab
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
-
-"
-map \p <Action>(ParameterInfo)
 map <A-F4> <Action>(CloseProject)
+map <Tab> <Action>(NextTab)
+map <S-Tab> <Action>(PreviousTab)
 
 map <S-Space> <Action>(ShowErrorDescription)
 
@@ -80,7 +96,7 @@ map <leader>s <Action>(SelectInProjectView)
 map <leader>a <Action>(Annotate)
 map <leader>o <Action>(FileStructurePopup)
 
-" Text up and down
+""
 nmap <A-Up> <Action>(MoveStatementUp)
 nmap <A-Down> <Action>(MoveStatementDown)
 imap <A-Up> <Action>(MoveStatementUp)
