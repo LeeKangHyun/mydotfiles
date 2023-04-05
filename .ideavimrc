@@ -83,8 +83,11 @@ map <leader>v <Action>(SplitVertically)
 
 
 "" IDE Actions
-" Navigation Tab
+"
+map \p <Action>(ParameterInfo)
 map <A-F4> <Action>(CloseProject)
+
+" Navigation Tab
 map <Tab> <Action>(NextTab)
 map <S-Tab> <Action>(PreviousTab)
 
