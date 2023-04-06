@@ -81,7 +81,6 @@ map <leader>jh <Action>(ActivateJsonHelperToolWindow)
 map <leader>h <Action>(SplitHorizontally)
 map <leader>v <Action>(SplitVertically)
 
-
 "" IDE Actions
 "
 map \p <Action>(ParameterInfo)
@@ -93,11 +92,12 @@ map <S-Tab> <Action>(PreviousTab)
 
 map <S-Space> <Action>(ShowErrorDescription)
 
-map <leader>r <Action>(RenameElement)
-map <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
-map <leader>s <Action>(SelectInProjectView)
 map <leader>a <Action>(Annotate)
+map <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
 map <leader>o <Action>(FileStructurePopup)
+map <leader>q <Action>(QuickJavaDoc)
+map <leader>r <Action>(RenameElement)
+map <leader>s <Action>(SelectInProjectView)
 
 ""
 nmap <A-Up> <Action>(MoveStatementUp)
