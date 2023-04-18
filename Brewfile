@@ -8,8 +8,12 @@ brew "n"
 brew "peco"
 brew "vim"
 brew "mas"
+brew "jq"
+brew "fortune"
 cask "itsycal"
 cask "raycast"
 cask "google-chrome"
 cask "docker"
+cask "min"
 mas "Slack", id: 803453959
+mas "1Password", id: 1333542190
