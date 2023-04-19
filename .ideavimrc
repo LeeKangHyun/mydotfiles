@@ -85,6 +85,8 @@ map <leader>v <Action>(SplitVertically)
 "
 map \p <Action>(ParameterInfo)
 map <A-F4> <Action>(CloseProject)
+nmap <F10> <Action>(ExportSettings)
+nmap <F11> <Action>(ImportSettings)
 
 " Navigation Tab
 map <Tab> <Action>(NextTab)
@@ -102,10 +104,16 @@ map <leader>s <Action>(SelectInProjectView)
 ""
 nmap <A-Up> <Action>(MoveStatementUp)
 nmap <A-Down> <Action>(MoveStatementDown)
+nmap <A-k> <Action>(MoveStatementUp)
+nmap <A-j> <Action>(MoveStatementDown)
+
 imap <A-Up> <Action>(MoveStatementUp)
 imap <A-Down> <Action>(MoveStatementDown)
+
 vmap <A-Up> <Action>(MoveStatementUp)
 vmap <A-Down> <Action>(MoveStatementDown)
+vmap <A-k> <Action>(MoveStatementUp)
+vmap <A-j> <Action>(MoveStatementDown)
 
 " vim
 sethandler <C-A> a:vim
