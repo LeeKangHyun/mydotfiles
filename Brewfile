@@ -14,10 +14,12 @@ brew "jq"
 brew "fortune"
 brew "n"
 brew "nvm"
+brew "neofetch"
 cask "itsycal"
 cask "raycast"
 cask "google-chrome"
 cask "docker"
 cask "min"
+cask "iterm2"
 mas "Slack", id: 803453959
 mas "1Password", id: 1333542190
