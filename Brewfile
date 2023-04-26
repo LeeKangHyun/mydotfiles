@@ -1,7 +1,9 @@
 tap "homebrew/bundle"
 tap "homebrew/cask"
+tap "homebrew/cask-fonts"
 tap "homebrew/core"
 brew "python"
+brew "curl"
 brew "git"
 brew "exa"
 brew "fzf"
@@ -21,5 +23,6 @@ cask "google-chrome"
 cask "docker"
 cask "min"
 cask "iterm2"
+cask "font-jetbrains-mono"
 mas "Slack", id: 803453959
 mas "1Password", id: 1333542190
