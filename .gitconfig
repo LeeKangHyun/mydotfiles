@@ -1,8 +1,96 @@
+; [include]
+;     path = ~/Documents/path/mydotfiles/.gitconfig
+
 [fetch]
     prune = true
 [alias]
+    # 기본 별칭
     s = status -s
     sw = switch
+    re = restore
+
+    # git branch *
+    ch = "!git branch-select"
+    branch-list = "!# List the branches.;\n\
+        git for-each-ref --sort=-committerdate refs/heads --format='%(HEAD) %(refname:strip=2) | %(committerdate:relative) | %(authorname)' \
+        | column -ts'|' \
+        | sed 's/^ /./'"
+    branch-list-all = "!# List all branches.;\n\
+        for branch in `git branch -r --merged | grep -v HEAD`; do echo `git show --format=\"%ci ; %cr ; %an ;\" $branch | head -n 1` $branch; done | sort -r | column -ts';'"
+    branch-select = "!# Select a branch.;\n\
+        f() { \
+            _height=$(stty size | awk '{print $1}');\
+            git branch-list | fzf --preview \"git l {2} | head -n $_height\" | awk '{print $2}'; \
+        }; f"
+
+    # git add *
+    a = "!git diff-select | xargs git add"
+    diff-info = "!# Print diff report.;\n\
+        fileA=/tmp/git-s-$(uuidgen); \
+        fileB=/tmp/git-diff-$(uuidgen); \
+        git s | awk '{print $2,$1}' > $fileA; \
+        git diff --numstat | awk '{print $3,$1,$2}' > $fileB; \
+        join -t' ' -a 1 $fileA $fileB | awk '{print $2, \"(+\"$3 \",-\"$4\")\", $1}' | sed 's/(+,-)/./; s/^\\([^?]\\) *\\./\\1 STAGED/' | column -t -s' ' ; \
+        rm -f $fileA $fileB; \
+        "
+    diff-select = "!# Select changed files to add them.;\n\
+        f() { \
+            git diff-info \
+            | egrep -v '[^?] *STAGED ' \
+            | fzf -m --header \"$(git diff --shortstat)\" --preview \
+                \"if [[ {1} == '??' ]]; then bat {3}; else git diff --color=always {3}; fi\" \
+            | awk '{print $3}'; \
+        }; f"
+    diff-unselect = "!# Select staged files to unstage them.;\n\
+        f() { \
+            git diff-info \
+            | egrep '[^?] *STAGED ' \
+            | fzf -m --header \"$(git diff --shortstat)\" --preview \
+                \"if [[ {1} == '??' ]]; then pygmentize {3}; else git diff --color=always --cached {3}; fi\" \
+            | awk '{print $3}'; \
+        }; f"
+    unstage = "!# Select staged files and Unstage them.;\n\
+        git diff-unselect | xargs git reset HEAD"
+
+    # git commit *
+    commit-select = "!# Select a commit hash from log graph.;\n\
+        git l \
+        | fzf -m --ansi --layout=reverse --preview=\"echo {} | sed 's/^[*| ]*//g' | cut -d' ' -f1 | xargs git show --color=always \" \
+        | sed 's/^[*| ]*//g' | cut -d' ' -f1"
+    commit-copy = "!# Select & copy a commit hash from log graph.;\n\
+        git commit-select | tr -d '\n' | pbcopy && echo Copied: `pbpaste`;"
+
+    # git stash
+    stash-save = "!# Save changes into the stash stack.;\n \
+        git diff-info; \
+        read -p \"save message: \" msg; \
+        git stash save \"$msg\""
+
+    stash-list = "!# List stash items.;\n\
+        git stash list --pretty=format:\"%C(red)%gd%C(reset) %C(green)(%cr) %C(reset)%s\""
+
+    stash-select = "!# Select stash item(s).;\n\
+        f() { \
+            git stash-list \
+            | fzf --ansi $1 --preview \"git stash show -p {1} --color=always\" \
+            | cut -d' ' -f1; \
+        }; f"
+
+    stash-drop = "!# Select the stash items and Drop them.;\n\
+        for sid in $(git stash-select -m) ; do \
+            git stash drop $sid; \
+        done;"
+
+    stash-op = "!#A private stash tool.;\n\
+        f() { \
+            git stash-select | xargs git stash $1; \
+        }; f"
+    stash-apply = "!# Select a stash item and Apply it.;\n\
+        git stash-op apply"
+    stash-pop = "!# Select a stash item and Pop it.;\n\
+        git stash-op pop"
+        
+    # log 별칭
     l = "log \
         --color --graph --decorate \
         --date=format:'%Y-%m-%d' \
@@ -23,4 +111,33 @@
         --date=format:'%Y-%m-%d %H:%M:%S' \
         --abbrev-commit \
         --pretty=format:'%C(red)%H%C(auto)%d %s %C(green)(%ad)%C(bold blue) %an'"
+    lh = "!git l | head -25"
+    ranking = "!# List commit counts of contributors;\n\
+        git shortlog -sn"
+
+    # git merge *
+    knot = "!# Merge two commits with 1 depth.;\n\
+    f() { \
+        if [ $(git status --short | egrep -v '^\\?' | wc -l) -gt 0 ]; then \
+            echo '변경사항을 먼저 정리해 주세요.';\
+            return; \
+        fi; \
+        _branch=`git b0`; \
+        _current=backup-`uuidgen`; \
+        _knot1=`uuidgen`; \
+        _knot2=`uuidgen`; \
+        git tag $_current; \
+        git switch -c $_knot2 $2; \
+        git switch -c $_knot1 $1; \
+        git merge $2 --no-ff; \
+        git switch $_branch; \
+        git rebase -i -r $_knot1; \
+        git branch -D $_knot1; \
+        git branch -D $_knot2; \
+        read -p \"Delete backup tag $_current ? [y|n] \" -r; \
+        REPLY=${REPLY:-"n"}; \
+        if [ $REPLY = \"y\" ]; then \
+            git tag -d $_current; \
+        fi; \
+    }; f"
 
