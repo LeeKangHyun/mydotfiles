@@ -71,6 +71,31 @@
             fi; \
         done"
 
+    sync = "!# Sync with a branch with the same name in the remote repo.;\n\
+        remote=$( \
+            { \
+                git remote -v | egrep '^(origin|upstream)\\s'; \
+                git remote -v | egrep -v '^(origin|upstream)\\s' | sort; \
+            } \
+            | awk '{print $1, $2}' | uniq \
+            | column -t \
+            | fzf | awk '{print $1}' \
+        ); \
+        if ! [ -z $remote ]; then \
+            git fetch $remote && git reset --hard $remote/`git b0`; \
+        fi"
+    update = "!# Synchronize the contents of local files with the repository;\n\
+        remote=$( \
+            { \
+                git remote -v | egrep '^(origin|upstream)\\s'; \
+                git remote -v | egrep -v '^(origin|upstream)\\s' | sort; \
+            } \
+            | awk '{print $1, $2}' | uniq \
+            | column -t \
+            | fzf | awk '{print $1}' \
+        ); \
+        git stash; git pull --rebase $remote `git b0`; git stash pop;"
+
     # git add *
     a = "!git diff-select | xargs git add"
     diff-info = "!# Print diff report.;\n\
