@@ -96,7 +96,7 @@
 
     # git add *
     a = "!git diff-select | xargs git add"
-    diff-info = "!# Print diff report.;\n\
+    diff-info = "!# Print diff report.;\n \
         fileA=/tmp/git-s-$(uuidgen); \
         fileB=/tmp/git-diff-$(uuidgen); \
         git s | awk '{print $2,$1}' > $fileA; \
@@ -160,7 +160,7 @@
         git stash-op apply"
     stash-pop = "!# Select a stash item and Pop it.;\n \
         git stash-op pop"
-        
+
     # log 별칭
     l = "log \
         --color --graph --decorate \
@@ -183,7 +183,7 @@
         --abbrev-commit \
         --pretty=format:'%C(red)%H%C(auto)%d %s %C(green)(%ad)%C(bold blue) %an'"
     lh = "!git l | head -25"
-    ranking = "!# List commit counts of contributors;\n\
+    ranking = "!# List commit counts of contributors;\n \
         git shortlog -sn"
 
     # git merge *
