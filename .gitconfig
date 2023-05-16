@@ -187,24 +187,22 @@
     # log 별칭
     l = "log \
         --color --graph --decorate \
+        --no-merges \
         --date=format:'%Y-%m-%d' \
-        --abbrev-commit \
         --pretty=format:'%C(red)%h%C(auto)%d %s %C(green)(%cr)%C(bold blue) %an'"
     ld = "log \
         --color --graph --decorate \
+        --no-merges \
         --date=format:'%Y-%m-%d %H:%M:%S' \
-        --abbrev-commit \
-        --pretty=format:'%C(red)%h%C(auto)%d %s %C(green)(%ad)%C(bold blue) %an'"
+        --pretty=format:'%C(red)%h%C(auto)%d %s %C(green)(%ad)%C(bold blue) %an <%ae>'"
     ll = "log \
         --color --graph --decorate \
         --date=format:'%Y-%m-%d' \
-        --abbrev-commit \
         --pretty=format:'%C(red)%H%C(auto)%d %s %C(green)(%cr)%C(bold blue) %an'"
     lld = "log \
         --color --graph --decorate \
         --date=format:'%Y-%m-%d %H:%M:%S' \
-        --abbrev-commit \
-        --pretty=format:'%C(red)%H%C(auto)%d %s %C(green)(%ad)%C(bold blue) %an'"
+        --pretty=format:'%C(red)%H%C(auto)%d %s %C(green)(%ad)%C(bold blue) %an <%ae>'"
     lh = "!git l | head -25"
     ranking = "!# List commit counts of contributors;\n \
         git shortlog -sn"
