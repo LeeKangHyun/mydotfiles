@@ -16,10 +16,16 @@
     trustExitCode = true
 
 [alias]
+    alias-basic = "!#----------------------------------------------------------;\n\
+        git alias | head -7"
+
     # 기본 별칭
     s = status -s
     sw = switch
     re = restore
+
+    alias-branch = "!#----------------------------------------------------------;\n\
+        git alias | egrep '[bB]ranch'"
 
     # git branch *
     ch = "!git bb $1"
@@ -94,6 +100,8 @@
         ); \
         git stash; git pull --rebase $remote `git b0`; git stash pop;"
 
+    alias-stage = "!#----------------------------------------------------------;\n\
+        git alias | egrep '(add|diff|stage)' -i"
     # git add *
     a = "!# 파일을 선택하고 add 한다. \n \
         git diff-select | xargs git add"
@@ -136,7 +144,7 @@
             | awk '{print $3}'; \
         }; f"
 
-    diff-unselect = "!# staged 파일들을 선택하고 출력. \n \
+    diff-unselect = "!# staged된 파일들을 선택하면 출력. \n \
         f() { \
             git diff-info \
             | egrep '[^?] *STAGED ' \
@@ -144,17 +152,11 @@
                 \"if [[ {1} == '??' ]]; then pygmentize {3}; else git diff --color=always --cached {3}; fi\" \
             | awk '{print $3}'; \
         }; f"
-    unstage = "!# staged된 파일들을 선택하면 출력. \n \
+    unstage = "!# staged된 파일들을 선택하면 unstage 한다. \n \
         git diff-unselect | xargs git reset HEAD"
 
-    # git commit *
-    commit-select = "!# git log에서 commit하나를 선택하고 출력. \n \
-        git l \
-        | fzf -m --ansi --layout=reverse --preview=\"echo {} | sed 's/^[*| ]*//g' | cut -d' ' -f1 | xargs git show --color=always \" \
-        | sed 's/^[*| ]*//g' | cut -d' ' -f1"
-    commit-copy = "!# git log에서 commit하나를 선택하고 클립보드에 복사. \n \
-        git commit-select | tr -d '\n' | pbcopy && echo Copied: `pbpaste`;"
-
+    alias-stash = "!#----------------------------------------------------------;\n\
+        git alias | grep stash"
     # git stash
     stash-save = "!# 변경 사항을 stash에 추가한다. \n \
         git diff-info; \
@@ -185,6 +187,15 @@
     stash-pop = "!# stash 아이템을 pop한다. \n \
         git stash-op pop"
 
+    alias-log = "!#----------------------------------------------------------;\n\
+        git alias | egrep 'log|commit-'"
+    # git commit *
+    commit-select = "!# git log에서 commit하나를 선택하고 출력. \n \
+        git l \
+        | fzf -m --ansi --layout=reverse --preview=\"echo {} | sed 's/^[*| ]*//g' | cut -d' ' -f1 | xargs git show --color=always \" \
+        | sed 's/^[*| ]*//g' | cut -d' ' -f1"
+    commit-copy = "!# git log에서 commit하나를 선택하고 클립보드에 복사. \n \
+        git commit-select | tr -d '\n' | pbcopy && echo Copied: `pbpaste`;"
     # log 별칭
     l = "log \
         --color --graph --decorate \
@@ -205,11 +216,11 @@
         --date=format:'%Y-%m-%d %H:%M:%S' \
         --pretty=format:'%C(red)%H%C(auto)%d %s %C(green)(%ad)%C(bold blue) %an <%ae>'"
     lh = "!git l | head -25"
-    ranking = "!# List commit counts of contributors;\n \
+    ranking = "!# commit 수 랭킹을 집계한 결과를 출력.  \n \
         git shortlog -sn"
 
     # git merge *
-    knot = "!# 2개의 커밋을 선택하면 머지한다. \n \
+    knot = "!# 2개의 커밋을 선택하면 머지. \n \
         f() { \
             if [ $(git status --short | egrep -v '^\\?' | wc -l) -gt 0 ]; then \
                 echo '변경사항을 먼저 정리해 주세요.';\
@@ -233,4 +244,26 @@
                 git tag -d $_current; \
             fi; \
         }; f"
+
+    alias-alias = "!#----------------------------------------------------------;\n\
+        git alias | grep alias"
+    alias = "!# 모든 alias를 출력. \n\
+        git config --list | egrep '^alias.+' | sed -e 's/^alias\\.//' | sed -e 's/^[^=]*=/\\'$'\\033[31m&\\033[(B\\033[m/' | column -t -s'=' | sed 's/!#* *//; s/;$//' | cut -c1-85"
+    alias-doctor = "!# alias에서 사용하는 dependency를 점검. \n\
+        f() { \
+            if [ $(which pygmentize | wc -l) -lt 1 ]; then \
+                echo 'Not found : Pygments(pygmentize)'; \
+                echo '    see     : http://pygments.org/'; \
+                echo '    install : pip3 install Pygments'; \
+                echo '';\
+            fi; \
+            if [ $(which fzf | wc -l) -lt 1 ]; then \
+                echo 'Not found : fzf'; \
+                echo '    see          : https://github.com/junegunn/fzf#installation'; \
+                echo '    install(Mac) : brew install fzf'; \
+                echo '    install(git) : git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf'; \
+                echo '                   ~/.fzf/install'; \
+                echo '';\
+            fi; \
+        }; f" 
 
