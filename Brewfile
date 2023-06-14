@@ -34,5 +34,6 @@ cask "min"
 cask "iterm2"
 cask "font-jetbrains-mono"
 cask "warp"
+cask "ngrok"
 mas "Slack", id: 803453959
 mas "1Password", id: 1333542190
