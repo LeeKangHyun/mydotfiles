@@ -26,7 +26,7 @@ export HISTFILESIZE=1000000
 export HISTSIZE=1000000
 
 # fzf setting
-export FZF_DEFAULT_COMMAND='fd - type f'
+export FZF_DEFAULT_COMMAND='fd -t f'
 export FZF_DEFAULT_OPTS="
 --bind 'ctrl-u:half-page-up,ctrl-d:half-page-down'
 --bind 'ctrl-p:preview-half-page-up,ctrl-n:preview-half-page-down'

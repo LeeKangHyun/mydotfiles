@@ -218,7 +218,7 @@
         --date=format:'%Y-%m-%d %H:%M:%S' \
         --pretty=format:'%C(red)%H%C(auto)%d %s %C(green)(%ad)%C(bold blue) %an <%ae>'"
     lh = "!git l | head -25"
-    lf = "!# 주어진 file의 history 출력.; \n \
+    lf = "!# 주어진 file의 history 출력. \n \
         fzf --preview=\"bat {}\" | xargs git l --follow"
     lfp = "!# 주어진 file의 history를 자세히 출력. \n \
         fzf --preview=\"bat {}\" | xargs git l --follow -p"
