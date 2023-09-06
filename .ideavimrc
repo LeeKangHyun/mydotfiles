@@ -103,12 +103,10 @@ map <leader>r <Action>(RenameElement)
 
 ""
 "" 문 이동
-nmap <A-Up> <Action>(MoveStatementUp)
-nmap <A-Down> <Action>(MoveStatementDown)
-imap <A-Up> <Action>(MoveStatementUp)
-imap <A-Down> <Action>(MoveStatementDown)
-vmap <A-Up> <Action>(MoveStatementUp)
-vmap <A-Down> <Action>(MoveStatementDown)
+nmap <S-A-k> <Action>(MoveStatementUp)
+nmap <S-A-j> <Action>(MoveStatementDown)
+vmap <S-A-k> <Action>(MoveStatementUp)
+vmap <S-A-j> <Action>(MoveStatementDown)
 
 "" 줄 이동
 nmap <A-k> <Action>(MoveLineUp)
