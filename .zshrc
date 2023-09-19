@@ -1,15 +1,14 @@
+# exa 설치 유무에 따른 분기 처리
 if ls --version > /dev/null 2>&1; then
-    alias ls='ls --color=auto'; #gnu
+    alias ls='ls --color=auto'
     alias l.='ls -d .* --color=auto'
 else
-    # alias ls='ls -G'; #osx
-    # alias ls='gls --color=tty --time-style="+%Y-%m-%d %a %H:%M:%S"'; #osx
-    alias ls='exa --time-style="long-iso"'; #osx
+    alias ls='exa --time-style="long-iso"'
     alias l.='ls -dG .*'
 fi
 
-alias ls="exa"
-alias ll="exa --time-style='long-iso' -alh"
+alias ll="ls -alh"
+
 alias port='lsof -i -nP | grep LISTEN | awk "{print \$(NF-1), \$1, \$2}" | sort -u'
 alias dflush='sudo dscacheutil -flushcache'
 alias blekill='sudo pkill bluetoothd'
@@ -32,4 +31,11 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-p:preview-half-page-up,ctrl-n:preview-half-page-down'
 --bind '?:toggle-preview'
 "
+
+# arch에 따라서 brew path 세팅
+if [ "$(arch)" = "arm64" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
 
