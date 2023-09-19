@@ -30,7 +30,7 @@ set idearefactormode=keep
 set ideamarks
 
 " Plugin
-set multiple-cursors
+" set multiple-cursors
 set easymotion
 set NERDTree
 
@@ -62,20 +62,25 @@ vnoremap L $
 
 map U <C-R>
 
-" ideavim 설정
-"" Plugin Mappings
-""" jetbrains plugin + vim plugin
-"" AceJump + ideaVim-easymotion
-map <leader>f <Plug>(easymotion-s)
-map <leader>e <Plug>(easymotion-f)
+" ideavim 설정 ---------------------------------------------------------
+  "" Plugin Mappings
+    """ jetbrains plugin + vim plugin
+      "" AceJump + ideaVim-easymotion
+      map <leader>f <Plug>(easymotion-s)
+      map <leader>e <Plug>(easymotion-f)
 
-""" vim plugin
-"" NERDTree
-nnoremap <silent> <F2> :NERDTreeFind<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
+    """ vim plugin
+      "" multiple-cursors
 
-""" jetbrains plugin
-map <leader>jh <Action>(ActivateJsonHelperToolWindow)
+
+      "" NERDTree
+      nnoremap <silent> <F2> :NERDTreeFind<CR>
+      nnoremap <silent> <F3> :NERDTreeToggle<CR>
+
+    """ jetbrains plugin
+      "" Json Helper
+      map <leader>jh <Action>(ActivateJsonHelperToolWindow)
+" --------------------------------------------------------------------
 
 "" 화면 분할
 map <leader>h <Action>(SplitHorizontally)
