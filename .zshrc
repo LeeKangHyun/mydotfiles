@@ -19,10 +19,18 @@ alias grep='grep --color=auto'
 alias rm="rm -iv"
 alias mv="mv -i"
 alias cp="cp -i"
+alias history="fc -li 1"
 
 # increase history size
-export HISTFILESIZE=1000000
+# the detailed meaning of the below three variable can be found in `man zshparam`.
 export HISTSIZE=1000000
+export SAVEHIST=1000000
+# The meaning of these options can be found in man page of `zshoptions`.
+setopt HIST_IGNORE_ALL_DUPS  # do not put duplicated command into history list
+setopt HIST_SAVE_NO_DUPS  # do not save duplicated command
+setopt HIST_REDUCE_BLANKS  # remove unnecessary blanks
+setopt INC_APPEND_HISTORY_TIME  # append command to history file immediately after execution
+setopt EXTENDED_HISTORY  # record command start time
 
 # fzf setting
 export FZF_DEFAULT_COMMAND='fd -t f'
