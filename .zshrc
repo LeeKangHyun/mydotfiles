@@ -33,8 +33,9 @@ setopt INC_APPEND_HISTORY_TIME  # append command to history file immediately aft
 setopt EXTENDED_HISTORY  # record command start time
 
 # fzf setting
-export FZF_DEFAULT_COMMAND='fd -t f'
+export FZF_DEFAULT_COMMAND='fd -t f -t l -H -E ".*/*" --color=always'
 export FZF_DEFAULT_OPTS="
+--ansi
 --bind 'ctrl-u:half-page-up,ctrl-d:half-page-down'
 --bind 'ctrl-p:preview-half-page-up,ctrl-n:preview-half-page-down'
 --bind '?:toggle-preview'
