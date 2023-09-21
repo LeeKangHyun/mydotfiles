@@ -12,6 +12,7 @@ alias ll="ls -alh"
 alias port='lsof -i -nP | grep LISTEN | awk "{print \$(NF-1), \$1, \$2}" | sort -u'
 alias dflush='sudo dscacheutil -flushcache'
 alias blekill='sudo pkill bluetoothd'
+alias ffind='fzf --preview "bat --color=always --line-range=:500 {}" --bind "enter:become(vim {})"'
 
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -35,6 +36,7 @@ setopt EXTENDED_HISTORY  # record command start time
 # fzf setting
 export FZF_DEFAULT_COMMAND='fd -t f -t l -H -E ".*/*" --color=always'
 export FZF_DEFAULT_OPTS="
+--layout=reverse
 --ansi
 --bind 'ctrl-u:half-page-up,ctrl-d:half-page-down'
 --bind 'ctrl-p:preview-half-page-up,ctrl-n:preview-half-page-down'
