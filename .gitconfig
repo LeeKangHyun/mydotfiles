@@ -34,7 +34,7 @@
     back = "!# 현재 작업중인 branch backup. \n \
         echo created new branch: backup-`git b0`; \
         git branch backup-`git b0`"
-    bb = "!# branch 도구 모음. \n \
+    bb = "!# branch 도구 모음. 기본 checkout  \n \
         f() { \n \
             if [ $# = 0 ]; then \
                 git branch-select | xargs git checkout; \
