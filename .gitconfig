@@ -199,25 +199,30 @@
     commit-copy = "!# git log에서 commit하나를 선택하고 클립보드에 복사. \n \
         git commit-select | tr -d '\n' | pbcopy && echo Copied: `pbpaste`;"
     # log 별칭
-    l = "log \
+    l = "!# 간단 log \n \
+        git log \
         --color --graph --decorate \
         --no-merges \
         --date=format:'%Y-%m-%d' \
         --pretty=format:'%C(red)%h%C(auto)%d %s %C(green)(%cr)%C(bold blue) %an'"
-    ld = "log \
+    ld = "!# 디테일 간단 log \n \
+        git log \
         --color --graph --decorate \
         --no-merges \
         --date=format:'%Y-%m-%d %H:%M:%S' \
         --pretty=format:'%C(red)%h%C(auto)%d %s %C(green)(%ad)%C(bold blue) %an <%ae>'"
-    ll = "log \
+    ll = "!# hash 강조 log \n \
+        git log \
         --color --graph --decorate \
         --date=format:'%Y-%m-%d' \
         --pretty=format:'%C(red)%H%C(auto)%d %s %C(green)(%cr)%C(bold blue) %an'"
-    lld = "log \
+    lld = "!# hash 강조 디테일 log \n \
+        git log \
         --color --graph --decorate \
         --date=format:'%Y-%m-%d %H:%M:%S' \
         --pretty=format:'%C(red)%H%C(auto)%d %s %C(green)(%ad)%C(bold blue) %an <%ae>'"
-    lh = "!git l | head -25"
+    lh = "!# 최근 25개 log \n \
+        git l | head -25"
     lf = "!# 주어진 file의 history 출력. \n \
         fzf --preview=\"bat {}\" | xargs git l --follow"
     lfp = "!# 주어진 file의 history를 자세히 출력. \n \
