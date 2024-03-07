@@ -34,6 +34,7 @@ cask "min"
 cask "iterm2"
 cask "font-jetbrains-mono"
 cask "font-fira-code"
+cask "font-monaspace"
 cask "warp"
 cask "ngrok"
 mas "Slack", id: 803453959
