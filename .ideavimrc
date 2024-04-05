@@ -93,6 +93,10 @@ map <A-F4> <Action>(CloseProject)
 nmap <F10> <Action>(ExportSettings)
 nmap <F11> <Action>(ImportSettings)
 
+map <leader>o <Action>(FileStructurePopup)
+map <leader>q <Action>(QuickJavaDoc)
+map <leader>r <Action>(RenameElement)
+
 " Navigation Tab
 map <Tab> <Action>(NextTab)
 map <S-Tab> <Action>(PreviousTab)
@@ -102,9 +106,7 @@ map <S-Space> <Action>(ShowErrorDescription)
 " git
 map <leader>a <Action>(Annotate)
 map <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
-map <leader>o <Action>(FileStructurePopup)
-map <leader>q <Action>(QuickJavaDoc)
-map <leader>r <Action>(RenameElement)
+map <leader>gb <Action>(GitToolBox.CleanBranches)
 
 ""
 "" 문 이동
