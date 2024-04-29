@@ -41,6 +41,10 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-u:half-page-up,ctrl-d:half-page-down'
 --bind 'ctrl-p:preview-half-page-up,ctrl-n:preview-half-page-down'
 --bind '?:toggle-preview'
+--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9
+--color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9
+--color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6
+--color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4
 "
 
 # arch에 따라서 brew path 세팅
