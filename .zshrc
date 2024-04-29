@@ -3,7 +3,7 @@ if ls --version > /dev/null 2>&1; then
     alias ls='ls --color=auto'
     alias l.='ls -d .* --color=auto'
 else
-    alias ls='exa --time-style="long-iso"'
+    alias ls='eza --icons --color=always --time-style="long-iso"'
     alias l.='ls -dG .*'
 fi
 
