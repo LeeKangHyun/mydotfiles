@@ -65,63 +65,58 @@ map U <C-R>
 " ideavim 설정 ---------------------------------------------------------
   "" Plugin Mappings
     """ jetbrains plugin + vim plugin
-      "" AceJump + ideaVim-easymotion
+      """" AceJump + ideaVim-easymotion
       map <leader>f <Plug>(easymotion-s)
       map <leader>e <Plug>(easymotion-f)
 
-    """ vim plugin
-      "" multiple-cursors
-
-
-      "" NERDTree
+      """" NERDTree
       nnoremap <silent> <F2> :NERDTreeFind<CR>
       nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
     """ jetbrains plugin
-      "" Json Helper
+      """" Json Helper
       map <leader>jh <Action>(ActivateJsonHelperToolWindow)
+
+  "" IDE Actions
+    """ projects
+    map <A-F4> <Action>(CloseProject)
+    nmap <F10> <Action>(ExportSettings)
+    nmap <F11> <Action>(ImportSettings)
+
+    """ 화면 분할
+    map <leader>h <Action>(SplitHorizontally)
+    map <leader>v <Action>(SplitVertically)
+
+    """ Navigation Tab
+    map <Tab> <Action>(NextTab)
+    map <S-Tab> <Action>(PreviousTab)
+
+    """ working
+    map \p <Action>(ParameterInfo)
+    map <leader>o <Action>(FileStructurePopup)
+    map <leader>q <Action>(QuickJavaDoc)
+    map <leader>r <Action>(RenameElement)
+    map <S-Space> <Action>(ShowErrorDescription)
+
+    """ git
+    map <leader>a <Action>(Annotate)
+    map <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
+    map <leader>gb <Action>(GitToolBox.CleanBranches)
+
+    """ 문맥 이동
+    nmap <S-A-k> <Action>(MoveStatementUp)
+    nmap <S-A-j> <Action>(MoveStatementDown)
+    vmap <S-A-k> <Action>(MoveStatementUp)
+    vmap <S-A-j> <Action>(MoveStatementDown)
+
+    nmap <A-k> <Action>(MoveLineUp)
+    nmap <A-j> <Action>(MoveLineDown)
+    vmap <A-k> <Action>(MoveLineUp)
+    vmap <A-j> <Action>(MoveLineDown)
 " --------------------------------------------------------------------
 
-"" 화면 분할
-map <leader>h <Action>(SplitHorizontally)
-map <leader>v <Action>(SplitVertically)
-
-"" IDE Actions
-"
-map \p <Action>(ParameterInfo)
-map <A-F4> <Action>(CloseProject)
-nmap <F10> <Action>(ExportSettings)
-nmap <F11> <Action>(ImportSettings)
-
-map <leader>o <Action>(FileStructurePopup)
-map <leader>q <Action>(QuickJavaDoc)
-map <leader>r <Action>(RenameElement)
-
-" Navigation Tab
-map <Tab> <Action>(NextTab)
-map <S-Tab> <Action>(PreviousTab)
-
-map <S-Space> <Action>(ShowErrorDescription)
-
-" git
-map <leader>a <Action>(Annotate)
-map <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
-map <leader>gb <Action>(GitToolBox.CleanBranches)
-
-""
-"" 문 이동
-nmap <S-A-k> <Action>(MoveStatementUp)
-nmap <S-A-j> <Action>(MoveStatementDown)
-vmap <S-A-k> <Action>(MoveStatementUp)
-vmap <S-A-j> <Action>(MoveStatementDown)
-
-"" 줄 이동
-nmap <A-k> <Action>(MoveLineUp)
-nmap <A-j> <Action>(MoveLineDown)
-vmap <A-k> <Action>(MoveLineUp)
-vmap <A-j> <Action>(MoveLineDown)
-
-" vim
+" ideavim ide 설정 --------------------------------------------------------------------
+"" vim
 sethandler <C-A> a:vim
 sethandler <C-D> a:vim
 sethandler <C-F> a:vim
@@ -137,12 +132,12 @@ sethandler <C-R> n:vim
 
 sethandler <C-V> a:vim
 
-" ide
+"" ide
 sethandler <C-G> a:ide
 
 sethandler <C-T> a:ide
 
-" misc
+"" misc
 sethandler <C-2> a:ide
 sethandler <C-E> a:ide
 sethandler <C-I> a:ide
@@ -155,3 +150,5 @@ sethandler <C-6> a:ide
 sethandler <C-S-2> a:ide
 sethandler <C-S-6> a:ide
 sethandler <C-w> a:ide
+" --------------------------------------------------------------------
+
