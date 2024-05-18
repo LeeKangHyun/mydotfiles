@@ -77,6 +77,9 @@ map U <C-R>
       """" Json Helper
       map <leader>jh <Action>(ActivateJsonHelperToolWindow)
 
+      """" ai assistant
+      map <leader>ai <Action>(ActivateAIAssistantToolWindow)
+
   "" IDE Actions
     """ projects
     map <A-F4> <Action>(CloseProject)
