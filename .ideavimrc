@@ -102,7 +102,7 @@ map U <C-R>
     map <S-Space> <Action>(ShowErrorDescription)
 
     """ git
-    map <leader>a <Action>(Annotate)
+    map <leader>an <Action>(Annotate)
     map <leader>gh <Action>(Vcs.ShowTabbedFileHistory)
     map <leader>gb <Action>(GitToolBox.CleanBranches)
 
