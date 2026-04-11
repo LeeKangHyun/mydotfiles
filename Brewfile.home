@@ -1,0 +1,8 @@
+# Home-only apps
+cask "itsycal"
+cask "min"
+cask "ngrok"
+
+# Mac App Store
+mas "1Password", id: 1333542190
+mas "Slack", id: 803453959

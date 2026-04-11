@@ -24,20 +24,18 @@ echo "\n"
 
 ##
 echo "======== Brewfile 실행을 준비합니다. ========"
-if [ ! -e ./Brewfile ]; then
-    echo " Brewfile이 현재 경로에 없습니다."
+read -p "환경을 선택하세요 (home/work): " env_type
+
+if [ "$env_type" != "home" ] && [ "$env_type" != "work" ]; then
+    echo "home 또는 work만 입력 가능합니다."
     exit 1
 fi
 
-if [ -e ./Brewfile ]; then
-    echo "Brewfile이 현재 경로에 있습니다."
-    read -p "brew bundle dump를 실행하시겠습니까? (y/n) -> " user_input
+echo "공통 패키지를 설치합니다..."
+brew bundle --file=./Brewfile.common
 
-    if [ "$user_input" == "y" ]; then
-        echo "brew bundle dump를 실행합니다."
-        brew bundle dump
-    fi
-fi
+echo "$env_type 전용 패키지를 설치합니다..."
+brew bundle --file=./Brewfile.$env_type
 echo "\n"
 
 ##
@@ -65,3 +63,5 @@ create_symlink() {
 }
 
 create_symlink ./.ideavimrc ~/.ideavimrc
+create_symlink ./zsh/.zshrc ~/.zshrc
+create_symlink ./.zprofile ~/.zprofile

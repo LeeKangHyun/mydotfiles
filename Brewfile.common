@@ -1,0 +1,43 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/cask-fonts"
+tap "homebrew/core"
+
+# CLI tools
+brew "bat"
+brew "curl"
+brew "eza"
+brew "fd"
+brew "fortune"
+brew "fzf"
+brew "gh"
+brew "git"
+brew "jq"
+brew "mas"
+brew "n"
+brew "neofetch"
+brew "peco"
+brew "python"
+brew "ripgrep"
+brew "tree"
+brew "vim"
+
+# Build dependencies
+brew "openssl"
+brew "readline"
+brew "sqlite3"
+brew "xz"
+brew "zlib"
+
+# Apps
+cask "docker"
+cask "google-chrome"
+cask "raycast"
+cask "warp"
+
+# Fonts
+cask "font-d2coding-nerd-font"
+cask "font-fira-code"
+cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"
+cask "font-monaspace"
