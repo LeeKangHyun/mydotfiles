@@ -24,7 +24,8 @@ echo "\n"
 
 ##
 echo "======== Brewfile 실행을 준비합니다. ========"
-read -p "환경을 선택하세요 (home/work): " env_type
+read -p "환경을 선택하세요 (home/work) [home]: " env_type
+env_type="${env_type:-home}"
 
 if [ "$env_type" != "home" ] && [ "$env_type" != "work" ]; then
     echo "home 또는 work만 입력 가능합니다."
