@@ -24,6 +24,11 @@ lg()
 # kiro
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
 
+# direnv
+if command -v direnv &>/dev/null; then
+    eval "$(direnv hook zsh)"
+fi
+
 # ngrok
 if command -v ngrok &>/dev/null; then
     eval "$(ngrok completion)"

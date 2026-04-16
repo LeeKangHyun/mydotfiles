@@ -58,5 +58,8 @@ export LC_ALL=ko_KR.UTF-8
 # default editor
 export EDITOR="zed-editor"
 
+# claude-hud 임시 workaround
+export COLUMNS=220
+
 # ECC hooks
 export ECC_DISABLED_HOOKS="stop:desktop-notify"
