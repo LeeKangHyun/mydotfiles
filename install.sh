@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
-BACKUP_DIR="~/.dotfiles-backup"
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+BACKUP_DIR="$HOME/.dotfiles-backup"
 
 mkdir -p "$BACKUP_DIR"
 
@@ -9,18 +10,18 @@ echo "======== Homebrew가 설치되어 있는지 검사합니다. ========"
 if ! command -v brew &> /dev/null; then
     echo "Homebrew가 설치되어 있지 않습니다."
 
-    read -p "$INDENT Homebrew를 설치하시겠습니까? (y/n): " install_brew
+    read -p "Homebrew를 설치하시겠습니까? (y/n): " install_brew
 
     if [ "$install_brew" == "y" ]; then
         # https://brew.sh/index_ko
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-        echo "$INDENT Homebrew가 설치되었습니다."
+        echo "Homebrew가 설치되었습니다."
     fi
 else
-    echo "$INDENT Homebrew가 이미 설치되어 있습니다."
+    echo "Homebrew가 이미 설치되어 있습니다."
 fi
-echo "\n"
+echo
 
 ##
 echo "======== Brewfile 실행을 준비합니다. ========"
@@ -33,11 +34,11 @@ if [ "$env_type" != "home" ] && [ "$env_type" != "work" ]; then
 fi
 
 echo "공통 패키지를 설치합니다..."
-brew bundle --file=./Brewfile.common
+brew bundle --file="$DOTFILES_DIR/Brewfile.common"
 
 echo "$env_type 전용 패키지를 설치합니다..."
-brew bundle --file=./Brewfile.$env_type
-echo "\n"
+brew bundle --file="$DOTFILES_DIR/Brewfile.$env_type"
+echo
 
 ##
 echo "======== | symlink 연결 | ========"
@@ -63,6 +64,6 @@ create_symlink() {
   fi
 }
 
-create_symlink ./.ideavimrc ~/.ideavimrc
-create_symlink ./zsh/.zshrc ~/.zshrc
-create_symlink ./.zprofile ~/.zprofile
+create_symlink "$DOTFILES_DIR/.ideavimrc" "$HOME/.ideavimrc"
+create_symlink "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
+create_symlink "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"

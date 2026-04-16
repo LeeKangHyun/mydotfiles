@@ -59,7 +59,7 @@ install.sh가 하는 일:
 | `history.zsh` | 히스토리 크기, 중복 제거, 즉시 저장 |
 | `aliases.zsh` | eza, bat, grep, k8s, claude 등 alias |
 | `fzf.zsh` | fzf 기본 명령어, 키바인딩, dracula 색상 |
-| `tools.zsh` | ghostty, mise, lazygit, kiro, ngrok 연동 |
+| `tools.zsh` | ghostty, mise, lazygit, direnv, kiro, ngrok 연동 |
 | `greeting.zsh` | figlet, fortune, neofetch 시작 배너 |
 
 모듈 로드 순서: exports -> omz -> history -> aliases -> fzf -> tools -> greeting
@@ -68,6 +68,6 @@ install.sh가 하는 일:
 
 환경별로 분리되어 있습니다.
 
-- `Brewfile.common` - CLI 도구, 빌드 의존성, 공통 앱, 폰트
-- `Brewfile.home` - 개인용 앱 (itsycal, ngrok 등)
-- `Brewfile.work` - 회사 전용 앱
+- `Brewfile.common` - CLI 도구, 공통 앱, 폰트
+- `Brewfile.home` - 개인용 도구 및 앱 (fortune, neofetch, itsycal)
+- `Brewfile.work` - 회사 전용 도구 및 앱 (glab)

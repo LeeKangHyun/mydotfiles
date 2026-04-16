@@ -1,7 +1,7 @@
 # tools - 외부 도구 연동
 
 # ghostty shell integration
-if [[ -n /Applications/Ghostty.app/Contents/Resources/ghostty ]]; then
+if [[ -d /Applications/Ghostty.app/Contents/Resources/ghostty ]]; then
   source /Applications/Ghostty.app/Contents/Resources/ghostty/shell-integration/zsh/ghostty-integration
 fi
 
