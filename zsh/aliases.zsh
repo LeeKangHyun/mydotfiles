@@ -35,3 +35,7 @@ alias kubectl="minikube kubectl --"
 alias clp="claude --dangerously-skip-permissions"
 alias cld="claude --debug"
 alias clr="claude --resume"
+
+# codex
+alias cop="codex --yolo"
+
