@@ -31,11 +31,17 @@ alias history="fc -li 1"
 alias k='kubectl'
 alias kubectl="minikube kubectl --"
 
+###########################################################
+# agent cli
+
 # claude code
 alias clp="claude --dangerously-skip-permissions"
+alias cla="claude --permission-mode auto --enable-auto-mode"
 alias cld="claude --debug"
 alias clr="claude --resume"
 
 # codex
 alias cop="codex --yolo"
 
+###########################################################
+#
