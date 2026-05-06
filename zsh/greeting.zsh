@@ -9,6 +9,6 @@ if command -v fortune &>/dev/null && command -v cowsay &>/dev/null; then
     echo ''
 fi
 
-if command -v neofetch &>/dev/null; then
-    neofetch
+if command -v fastfetch &>/dev/null; then
+    fastfetch
 fi

@@ -11,7 +11,7 @@ mydotfiles/
 │   ├── aliases.zsh      # alias (ls, grep, k8s, claude 등)
 │   ├── exports.zsh      # PATH, 환경변수, locale
 │   ├── fzf.zsh          # fzf 설정 + dracula 테마
-│   ├── greeting.zsh     # 시작 배너 (figlet, fortune, neofetch)
+│   ├── greeting.zsh     # 시작 배너 (figlet, fortune, fastfetch)
 │   ├── history.zsh      # history 설정
 │   ├── omz.zsh          # oh-my-zsh (theme, plugins)
 │   └── tools.zsh        # 도구 연동 (ghostty, mise, lazygit 등)
@@ -22,6 +22,7 @@ mydotfiles/
 ├── Brewfile.common      # 공통 패키지
 ├── Brewfile.home        # 집 전용 패키지
 ├── Brewfile.work        # 회사 전용 패키지
+├── fastfetch/           # fastfetch 설정
 ├── install.sh
 └── README.md
 ```
@@ -47,6 +48,7 @@ install.sh가 하는 일:
 | `zsh/.zshrc` | `~/.zshrc` |
 | `.zprofile` | `~/.zprofile` |
 | `.ideavimrc` | `~/.ideavimrc` |
+| `fastfetch/config.jsonc` | `~/.config/fastfetch/config.jsonc` |
 
 ## zsh 모듈
 
@@ -60,7 +62,7 @@ install.sh가 하는 일:
 | `aliases.zsh` | eza, bat, grep, k8s, claude 등 alias |
 | `fzf.zsh` | fzf 기본 명령어, 키바인딩, dracula 색상 |
 | `tools.zsh` | ghostty, mise, lazygit, direnv, kiro, ngrok 연동 |
-| `greeting.zsh` | figlet, fortune, neofetch 시작 배너 |
+| `greeting.zsh` | figlet, fortune, fastfetch 시작 배너 |
 
 모듈 로드 순서: exports -> omz -> history -> aliases -> fzf -> tools -> greeting
 
@@ -69,5 +71,5 @@ install.sh가 하는 일:
 환경별로 분리되어 있습니다.
 
 - `Brewfile.common` - CLI 도구, 공통 앱, 폰트
-- `Brewfile.home` - 개인용 도구 및 앱 (fortune, neofetch, itsycal)
+- `Brewfile.home` - 개인용 도구 및 앱 (fortune, fastfetch, itsycal)
 - `Brewfile.work` - 회사 전용 도구 및 앱 (glab)

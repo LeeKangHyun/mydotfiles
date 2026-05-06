@@ -67,3 +67,6 @@ create_symlink() {
 create_symlink "$DOTFILES_DIR/.ideavimrc" "$HOME/.ideavimrc"
 create_symlink "$DOTFILES_DIR/zsh/.zshrc" "$HOME/.zshrc"
 create_symlink "$DOTFILES_DIR/.zprofile" "$HOME/.zprofile"
+
+mkdir -p "$HOME/.config/fastfetch"
+create_symlink "$DOTFILES_DIR/fastfetch/config.jsonc" "$HOME/.config/fastfetch/config.jsonc"

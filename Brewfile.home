@@ -1,6 +1,6 @@
 # Home-only CLI tools
 brew "fortune"
-brew "neofetch"
+brew "fastfetch"
 
 # Home-only apps
 cask "itsycal"
