@@ -8,7 +8,3 @@ if command -v fortune &>/dev/null && command -v cowsay &>/dev/null; then
     fortune -s computers | cowsay -f dragon-and-cow | lolcat
     echo ''
 fi
-
-if command -v fastfetch &>/dev/null; then
-    fastfetch
-fi
