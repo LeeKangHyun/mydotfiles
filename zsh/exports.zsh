@@ -62,4 +62,5 @@ export EDITOR="zed-editor"
 export COLUMNS=220
 
 # ECC hooks
-export ECC_DISABLED_HOOKS="stop:desktop-notify"
+export ECC_DISABLED_HOOKS="stop:desktop-notify,pre:edit-write:gateguard-fact-force"
+
