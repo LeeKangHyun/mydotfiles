@@ -1,9 +1,10 @@
 # exports - PATH, 환경변수, locale
 
 # arch에 따라서 brew path 세팅
-if [ "$(arch)" = "arm64" ]; then
+if [ "$(arch)" = "arm64" ] && [ -x /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
-else
+elif [ -x /usr/local/bin/brew ]; then
+  # Legacy Intel Homebrew fallback for Rosetta shells only when installed.
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
@@ -54,6 +55,8 @@ tx=36:"
 # locale
 export LANG=ko_KR.UTF-8
 export LC_ALL=ko_KR.UTF-8
+
+export CLAUDE_CODE_TMPDIR=~/Documents/blackhole
 
 # default editor
 export EDITOR="zed-editor"

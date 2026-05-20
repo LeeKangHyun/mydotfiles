@@ -36,12 +36,15 @@ alias kubectl="minikube kubectl --"
 
 # claude code
 alias clp="claude --dangerously-skip-permissions"
-alias cla="claude --permission-mode auto --enable-auto-mode"
+alias cla="claude agents --dangerously-skip-permissions"
 alias cld="claude --debug"
 alias clr="claude --resume"
 
 # codex
 alias cop="codex --yolo"
 
+# cmux
+alias cmuxcl="cmux claude-teams --dangerously-skip-permissions"
+alias cmuxco="cmux omx --yolo"
 ###########################################################
 #
