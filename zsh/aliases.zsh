@@ -40,6 +40,10 @@ alias cla="claude agents --dangerously-skip-permissions"
 alias cld="claude --debug"
 alias clr="claude --resume"
 
+# kangtolee-official 로컬 플러그인 테스트 (세션 한정 로드, 설치 불필요)
+alias clkt="claude --plugin-dir ~/Documents/develop/kangtolee-official/plugins/kangtolee"
+alias clkf="claude --plugin-dir ~/Documents/develop/kangtolee-official/plugins/kangto-factory"
+
 # codex
 alias cop="codex --yolo"
 
